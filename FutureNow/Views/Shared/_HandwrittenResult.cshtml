@@ -1,0 +1,21 @@
+﻿@using FutureNow.Models.Handwritten;
+
+@{
+    var handwrittenRecognitionResult = ViewBag.HandwrittenRecognitionResult == null ? null : (HandwrittenResultViewModel)ViewBag.HandwrittenRecognitionResult;
+}
+
+@if (handwrittenRecognitionResult == null || handwrittenRecognitionResult.RecognitionResult == null)
+{
+    <span class="text-muted">No results.</span>
+}
+else
+{
+    foreach (var line in handwrittenRecognitionResult.RecognitionResult.Lines)
+    {
+        foreach (var word in line.Words)
+        {
+            @:@word.Text
+        }
+        <br />
+    }
+}

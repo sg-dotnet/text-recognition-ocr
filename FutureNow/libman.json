@@ -1,0 +1,14 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "rangeslider.js@2.3.2",
+      "destination": "wwwroot/lib/rangeslider.js/"
+    },
+    {
+      "library": "font-awesome@4.7.0",
+      "destination": "wwwroot/lib/font-awesome/"
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+﻿@using FutureNow.Data.ViewModels;
+
+@{
+    ViewData["Title"] = "Future Now";
+}
+
+@model DocumentUploadViewModel
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Upload Document</h3>
+            </div>
+            <div class="panel-body">
+                <form method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label asp-for="File"></label>
+                        <input asp-for="File" />
+                        <span asp-validation-for="File" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="PredictionPercentage"></label>
+                        <input type="range" asp-for="PredictionPercentage" value="10" />
+                        <span id="PredictionCurrentPercentage" class="text-info"></span>
+                    </div>
+
+                    <button type="submit" id="btnUploadDocument" class="btn btn-success">Upload</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#tag-and-analyze" data-toggle="tab">Tag & Analyze</a></li>
+            <li><a href="#handwritten" data-toggle="tab">Handwritten</a></li>
+            <li><a href="#ocr" data-toggle="tab">OCR</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane fade active in" id="tag-and-analyze">
+                @await Html.PartialAsync("~/Views/Shared/_TagAndAnalyzeResult.cshtml")
+            </div>
+
+            <div class="tab-pane fade" id="handwritten">
+                @await Html.PartialAsync("~/Views/Shared/_HandwrittenResult.cshtml")                
+            </div>
+
+            <div class="tab-pane fade" id="ocr">
+                @await Html.PartialAsync("~/Views/Shared/_OpticalCharacterRecognitionResult.cshtml")
+            </div>
+        </div>
+        
+
+        
+
+        
+    </div>
+</div>
+
+
+@section Scripts {
+    <script>
+        // Initialize a new plugin instance for all
+        $(document).ready(function () {
+            $('input[type="range"]').rangeslider({
+
+                // Feature detection the default is `true`.
+                // Set this to `false` if you want to use
+                // the polyfill also in Browsers which support
+                // the native <input type="range"> element.
+                polyfill: false,
+
+                onInit: function () {
+                    this.output = $('<div class="range-output text-info" />').insertAfter(this.$range).html('<span class="fa fa-info-circle"></span> Prediction level is now ' + this.$element.val() + '%.');
+                },
+                onSlide: function (position, value) {
+                    this.output.html('<span class="fa fa-info-circle"></span> Prediction level is now ' + value + '%.');
+                }
+            });
+        });
+
+    </script>
+}

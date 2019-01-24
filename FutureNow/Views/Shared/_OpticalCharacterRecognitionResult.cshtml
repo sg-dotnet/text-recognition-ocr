@@ -1,0 +1,25 @@
+﻿@using FutureNow.Models.OpticalCharacterRecognition;
+
+@{
+    var ocrResult = ViewBag.OcrResult == null ? null : (OpticalCharacterRecognitionResultViewModel)ViewBag.OcrResult;
+}
+
+@if (ocrResult == null)
+{
+    <span class="text-muted">No results.</span>
+}
+else
+{
+    foreach (var region in ocrResult.Regions)
+    {
+        foreach (var line in region.Lines)
+        {
+            foreach (var word in line.Words)
+            {
+                @:@word.Text
+            }
+            <br />
+        }
+        <br />
+    }
+}

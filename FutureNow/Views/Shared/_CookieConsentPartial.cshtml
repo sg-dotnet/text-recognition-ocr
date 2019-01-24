@@ -1,0 +1,17 @@
+﻿@using Microsoft.AspNetCore.Http.Features
+
+@{
+    var consentFeature = Context.Features.Get<ITrackingConsentFeature>();
+    var showBanner = !consentFeature?.CanTrack ?? false;
+    var cookieString = consentFeature?.CreateConsentCookie();
+}
+
+@if (showBanner)
+{
+<div id="cookieConsent" class="alert alert-info">
+    <button type="button" class="close" data-dismiss="alert" data-cookie-string="@cookieString">OK</button>
+    <strong>Heads up!</strong>
+    This website uses cookies in order to demo to you the full power of .NET and Azure. Please accept cookies for optimal performance.
+    <strong><a asp-controller="Home" asp-action="Privacy">Learn More</a></strong>
+</div>
+}
