@@ -10,7 +10,7 @@ namespace FutureNow.Data.ViewModels
     public class DocumentUploadViewModel
     {
         [Required]
-        [Display(Name = "Prediction (%)")]
+        [Display(Name = "Precision (%)")]
         public int PredictionPercentage { get; set; }
 
         [Required]
