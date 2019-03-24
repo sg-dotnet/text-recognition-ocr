@@ -1,5 +1,5 @@
 # FutureNow
-A project to demonstrate the use cases of Custom Vision API, Computer Vision API, and Azure Key Vault. <br/> This POC project aims to solve the automated form processing.
+A project to demonstrate the use cases of Custom Vision API, Computer Vision API, and Azure Key Vault. <br/> This POC project aims to automate the form processing using AI services.
 
 Read "Handwritten Text Recognition, OCR, and Key Vault" [here](https://cuteprogramming.wordpress.com/2019/01/24/handwritten-text-recognition-ocr-and-key-vault/)
 
